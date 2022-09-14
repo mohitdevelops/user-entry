@@ -1,0 +1,69 @@
+form{
+    margin-top: 20px;
+}
+
+form input{
+    padding: 8px 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    border: solid 2px rgb(206 206 206);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    resize: none;
+}
+form input:focus{
+    outline: none;
+    border: solid 2px #DB0B5F;
+}
+form input[type=submit]{
+    background-image: linear-gradient(to right, #DB0B5F, #6F00ED);
+    color: #fff;
+    border: none;
+    transition: 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+h3{
+    color: #6F00ED;
+    font-size: 1.25rem;
+}
+.usercard__wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.user__card{
+    background-image: linear-gradient(45deg, #DB0B5F, #6F00ED);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    gap: 15px;
+}
+.user__card .user__thumb{
+    max-width: 95px;
+    height: 95px;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 5px;
+    border: solid 2px #fff;
+}
+.user__card .user__thumb img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.user__card .user__detail{
+    flex: 1;
+    color: #fff;
+}
+.user__card .user__detail h3{
+    color: #fff;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

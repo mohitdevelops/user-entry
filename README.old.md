@@ -1,0 +1,6 @@
+# Storing user data to firebase
+User Entry form and storing data into database
+
+Working on this app right now...
+
+Processing.......
