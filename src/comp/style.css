@@ -5,18 +5,31 @@ form{
 form input{
     padding: 8px 10px;
     width: 100%;
-    margin-bottom: 20px;
-    border: solid 2px rgb(206 206 206);
+    border: solid 2px transparent;
     border-radius: 4px;
     font-size: 0.95rem;
     resize: none;
+    color: #fff;
+    background-color: rgb(255 255 255 / 16%);
+}
+form .form__group{
+    margin-bottom: 15px;
+}
+form .form__group span.invalid{
+    color: rgb(95, 236, 255);
+    font-size: 0.8rem;
+}
+form input::placeholder{
+    color: #fff;
+    font-size: 0.8rem;
 }
 form input:focus{
     outline: none;
-    border: solid 2px #DB0B5F;
+    border: solid 2px #fff;
 }
 form input[type=submit]{
-    background-image: linear-gradient(to right, #DB0B5F, #6F00ED);
+    /* background-image: linear-gradient(to right, #FF4331, #D31A50); */
+    background-color: #222;
     color: #fff;
     border: none;
     transition: 0.3s ease;
@@ -24,28 +37,29 @@ form input[type=submit]{
     font-weight: 600;
 }
 h3{
-    color: #6F00ED;
-    font-size: 1.25rem;
+    color: #fff;
+    font-size: 1.5rem;
 }
 .usercard__wrap{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 .user__card{
-    background-image: linear-gradient(45deg, #DB0B5F, #6F00ED);
+    background-color: #fff;
     padding: 15px;
     border-radius: 8px;
     display: flex;
     gap: 15px;
+    align-items: center;
 }
 .user__card .user__thumb{
-    max-width: 95px;
-    height: 95px;
+    max-width: 100px;
+    height: 100px;
     flex: 1;
     overflow: hidden;
-    border-radius: 5px;
-    border: solid 2px #fff;
+    border: solid 5px #dedede;
+    border-radius: 50%;
 }
 .user__card .user__thumb img{
     width: 100%;
@@ -54,16 +68,33 @@ h3{
 }
 .user__card .user__detail{
     flex: 1;
-    color: #fff;
 }
 .user__card .user__detail h3{
-    color: #fff;
+    color: #222;
 }
 
+.user__card .user__detail span{
+    color: #000;
+    font-size: 1rem;
+}
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin: 0; 
+}
+.user__card .user__detail > div{
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+.user__card .user__detail > div p{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-weight: 600;
+}
+.user__card .user__detail > div .icons{
+    color: #e33834;
 }

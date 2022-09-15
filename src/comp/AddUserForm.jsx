@@ -1,32 +1,41 @@
 import { useState } from "react";
 import "./style.css";
 
-export default function AddUserForm({addedUser}) {
-	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
-	const [phone, setPhone] = useState('');
-	const [age, setAge] = useState('');
-	const [image, setImage] = useState('');
+export default function AddUserForm({ addedUser }) {
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [phone, setPhone] = useState("");
+	const [designation, setAge] = useState("");
+	const [image, setImage] = useState("");
 
-    const addUserHandler = (e) => {
-        e.preventDefault();
+	const addUserHandler = (e) => {
+		e.preventDefault();
 
-        const userData = {
-            userName: name,
-            userEmail: email,
-            userAge: age,
-            userPhone: phone,
-            userImage: image
-        }
+		if (
+			name == "" ||
+			email == "" ||
+			phone == "" ||
+			designation == "" ||
+			image == ""
+		)
+			return;
+
+		const userData = {
+			userName: name,
+			userEmail: email,
+			userDesignation: designation,
+			userPhone: phone,
+			userImage: image,
+		};
 		// Sending data back to the parent App.js
-        addedUser(userData);
+		addedUser(userData);
 
-        setAge('');
-        setEmail('');
-        setImage('');
-        setName('');
-        setPhone('');
-    }
+		setAge("");
+		setEmail("");
+		setImage("");
+		setName("");
+		setPhone("");
+	};
 
 	return (
 		<>
@@ -39,6 +48,7 @@ export default function AddUserForm({addedUser}) {
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 					/>
+					<span className="invalid">*Enter your full name</span>
 				</div>
 				<div className="form__group">
 					<input
@@ -47,21 +57,25 @@ export default function AddUserForm({addedUser}) {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 					/>
+					<span className="invalid">*Invalid Email</span>
+				</div>
+				<div className="form__group">
+					<input
+						type="text"
+						placeholder="Designation"
+						value={designation}
+						onChange={(e) => setAge(e.target.value)}
+					/>
 				</div>
 				<div className="form__group">
 					<input
 						type="number"
 						placeholder="Contact no."
 						value={phone}
-						onChange={(e) => setPhone(e.target.value)}
-					/>
-				</div>
-				<div className="form__group">
-					<input
-						type="number"
-						placeholder="Age"
-						value={age}
-						onChange={(e) => setAge(e.target.value)}
+						onChange={(e) => {
+							if (e.target.value.length > 11) return false;
+							setPhone(e?.target.value);
+						}}
 					/>
 				</div>
 				<div className="form__group">
@@ -73,7 +87,7 @@ export default function AddUserForm({addedUser}) {
 					/>
 				</div>
 				<div className="form__group">
-					<input type="submit" value="Add"/>
+					<input type="submit" value="Add" />
 				</div>
 			</form>
 		</>

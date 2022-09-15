@@ -3,6 +3,8 @@ import "./style.css";
 
 export default function Users({ newUser }) {
 
+	console.log(newUser);
+
 	return (
 		<div className="usercard__wrap">
 			{newUser.map((el, i) => {
@@ -11,7 +13,7 @@ export default function Users({ newUser }) {
 						key={i}
 						name={el.userName}
 						email={el.userEmail}
-						age={el.userAge}
+						designation={el.userDesignation}
 						phone={el.userPhone}
 						image={el.userImage}
 					/>

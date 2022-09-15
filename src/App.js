@@ -16,7 +16,7 @@ function App() {
       <AddUserForm addedUser={recieveUserData}/>
     </div>
     <div className="user__wrap">
-      <Users newUser={userData}/>
+      {userData.length > 0 ? <Users newUser={userData}/> : <p>No user found</p>}
     </div>
   </main>;
 }

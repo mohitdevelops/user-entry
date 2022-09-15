@@ -3,7 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+:root{
+  --primaryColor: #253898;
+  --secondaryColor: #5737D6;
+  --color: #253898;
+}
 body{
   background-color: #222;    
   height: 100%;
@@ -14,7 +18,7 @@ body{
 }
 main{
   max-width: 750px;
-  background-color: #fff;
+  background-image: linear-gradient(to right, var(--primaryColor), var(--secondaryColor));
   display: flex;
   align-items: stretch;
   margin: 15vh auto;
@@ -31,5 +35,12 @@ main > div{
 }
 .form__wrap{
   max-width: 270px;
-  border-right: solid 1px rgb(197, 197, 197);
+  border-right: solid 1px rgb(255 255 255 / 27%);
+}
+.user__wrap > p{
+  text-align: center;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 40px;
 }
