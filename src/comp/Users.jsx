@@ -3,8 +3,6 @@ import "./style.css";
 
 export default function Users({ newUser }) {
 
-	console.log(newUser);
-
 	return (
 		<div className="usercard__wrap">
 			{newUser.map((el, i) => {

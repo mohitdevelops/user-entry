@@ -5,7 +5,7 @@ export default function UserCard({ name, email, phone, designation, image }) {
 	return (
 		<div className="user__card">
 			<div className="user__thumb">
-				<img src={image} />
+				<img src={image} alt={name}/>
 			</div>
 			<div className="user__detail">
 				<h3>{name}</h3>
