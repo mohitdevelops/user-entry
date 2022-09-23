@@ -1,11 +1,9 @@
-import { useReducer } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import "./style.css";
 
-export default function AddUserForm({ addedUser }) {
-	// const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
+export default function AddUserForm({ addedUser, responseUserData }) {	
+
+	// const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
 	const [designation, setAge] = useState("");
 	const [image, setImage] = useState("");
@@ -18,15 +16,10 @@ export default function AddUserForm({ addedUser }) {
 					isValid: action.nameValue.includes(" "),
 				};
 			}
-			if (action.type === "USER_ON_CHANGE") {
+			if (action.type === "NAME_ON_CHANGE") {
 				return {
 					userName: state.userName,
 				};
-			}
-			if(action.type === "USER_ON_BLUR"){
-				return {
-					userName: '',
-				}
 			}
 		},
 		{
@@ -35,26 +28,65 @@ export default function AddUserForm({ addedUser }) {
 		}
 	);
 
-	const addUserHandler = (e) => {
+	const [emailState, dispatchEmailState] = useReducer(
+		(state, action) => {
+			if (action.type === "USEREMAIL") {
+				return {
+					userEmail: action.emailValue,
+					isValid: action.emailValue.includes("@"),
+				};
+			}
+			if (action.type === "EMAIL_ON_CHANGE") {
+				return {
+					userEmail: state.emailValue,
+				};
+			}
+		},
+		{
+			userEmail: "",
+			isValid: null,
+		}
+	);
+
+	const addUserHandler = async (e) => {
 		e.preventDefault();
+
+		setAge("");
+		setImage("");
+		setPhone("");
+		if (!nameState.isValid) {
+			alert("name is not valid");
+			return;
+		}
+		nameState.nameValue = "";
+		if (!emailState.isValid) {
+			alert("email is not valid");
+			return;
+		}
+		emailState.emailValue = "";
 
 		const userData = {
 			userName: nameState.userName,
-			userEmail: email,
+			userEmail: emailState.userEmail,
 			userDesignation: designation,
 			userPhone: phone,
 			userImage: image,
 		};
 		// Sending data back to the parent App.js
-		addedUser(userData);
+		addedUser(userData);	
+		
+		// const response = await fetch('https://user-entry-data-default-rtdb.asia-southeast1.firebasedatabase.app/users.json', {
+		// 	method: 'POST',
+		// 	body: JSON.stringify(userData),
+		// 	headers: {
+		// 		'Content-Type': 'application/json'
+		// 	}
+		// })
 
-		setAge("");
-		setEmail("");
-		setImage("");
-		setPhone("");
-		dispatchNameState({
-			type: 'USER_ON_BLUR'
-		});
+		// const data = await response.json();
+
+		// responseUserData(data);
+		
 	};
 
 	return (
@@ -68,7 +100,7 @@ export default function AddUserForm({ addedUser }) {
 						value={nameState.nameValue}
 						onChange={(e) =>
 							dispatchNameState({
-								type: "USER_ON_CHANGE",
+								type: "NAME_ON_CHANGE",
 								nameValue: e.target.value,
 							})
 						}
@@ -87,10 +119,23 @@ export default function AddUserForm({ addedUser }) {
 					<input
 						type="text"
 						placeholder="Email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
+						value={emailState.emailValue}
+						onChange={(e) =>
+							dispatchEmailState({
+								type: "EMAIL_ON_CHANGE",
+								emailValue: e.target.value,
+							})
+						}
+						onBlur={(e) =>
+							dispatchEmailState({
+								type: "USEREMAIL",
+								emailValue: e.target.value,
+							})
+						}
 					/>
-					<span className="invalid">*Invalid Email</span>
+					{emailState.isValid === false && (
+						<span className="invalid">*Invalid Email</span>
+					)}
 				</div>
 				<div className="form__group">
 					<input

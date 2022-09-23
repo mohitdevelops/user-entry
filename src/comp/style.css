@@ -20,7 +20,7 @@ form .form__group span.invalid{
     font-size: 0.8rem;
 }
 form input::placeholder{
-    color: #fff;
+    color: rgba(255, 255, 255, 0.502);
     font-size: 0.8rem;
 }
 form input:focus{
