@@ -47,15 +47,15 @@ h3{
 }
 .user__card{
     background-color: #fff;
-    padding: 15px;
+    padding: 15px 8px;
     border-radius: 8px;
     display: flex;
     gap: 15px;
     align-items: center;
 }
 .user__card .user__thumb{
-    max-width: 100px;
-    height: 100px;
+    max-width: 80px;
+    height: 80px;
     flex: 1;
     overflow: hidden;
     border: solid 5px #dedede;
@@ -68,6 +68,7 @@ h3{
 }
 .user__card .user__detail{
     flex: 1;
+    width: 100%;
 }
 .user__card .user__detail h3{
     color: #222;
@@ -88,13 +89,35 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 10px 0 0;
     display: flex;
     justify-content: space-between;
+    gap: 15px;
+    overflow-wrap: anywhere;
 }
 .user__card .user__detail > div p{
     display: flex;
     gap: 8px;
-    align-items: center;
+    align-items: flex-start;
     font-weight: 600;
+    width: 50%;
+    line-height: 1;
 }
 .user__card .user__detail > div .icons{
     color: #e33834;
+}
+
+@media screen and (max-width:767px) {
+    .user__card{
+        flex-direction: column;
+    }
+    .user__card .user__detail {
+        text-align: center;
+    }
+    .user__card .user__detail > div{
+        text-align: left;   
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+    .user__card .user__detail > div p{
+        overflow-wrap: anywhere;
+        align-items: flex-start;
+    }
 }

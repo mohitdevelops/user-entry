@@ -44,3 +44,15 @@ main > div{
   font-weight: 700;
   margin-top: 40px;
 }
+
+@media screen and (max-width: 767px) {
+  main{
+    flex-direction: column;
+    height: auto;
+    width: 85%;
+    margin: 35px auto;
+  }
+  .form__wrap{
+    max-width: 100%;
+  }
+}
