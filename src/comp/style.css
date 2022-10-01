@@ -100,6 +100,10 @@ input[type=number]::-webkit-outer-spin-button {
     width: 50%;
     line-height: 1;
 }
+.user__card .user__detail > div p a{
+    text-decoration: none;
+    color: inherit;
+}
 .user__card .user__detail > div .icons{
     color: #e33834;
 }

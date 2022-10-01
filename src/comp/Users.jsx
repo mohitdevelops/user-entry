@@ -2,7 +2,7 @@ import UserCard from "./UserCard";
 import "./style.css";
 
 export default function Users({ newUser }) {
-	console.log(newUser);
+	newUser.reverse()
 	return (
 		<div className="usercard__wrap">
 			{newUser.map((el, i) => {
@@ -12,7 +12,7 @@ export default function Users({ newUser }) {
 						name={el.userName}
 						email={el.userEmail}
 						designation={el.userDesignation}
-						phone={el.userPhone}
+						github={el.userGithub}
 						image={el.userImage}
 					/>
 				);

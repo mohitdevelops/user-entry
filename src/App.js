@@ -12,26 +12,19 @@ function App() {
 			const responseData = await fetch(
 				"https://react-users-db-default-rtdb.asia-southeast1.firebasedatabase.app/users.json"
 			);
-
 			const data = await responseData.json();
-			console.log(data);
-
 			const loadedData = [];
-
 			for (const key in data) {
 				loadedData.push({
 					key: key,
 					userName: data[key].userName,
 					userEmail: data[key].userEmail,
 					userDesignation: data[key].userDesignation,
-					userPhone: data[key].userPhone,
+					userGithub: data[key].userGithub,
 					userImage: data[key].userImage,
 				});
 			}
-
-			console.log(loadedData);
-
-			setUserData(loadedData);
+			setUserData(loadedData.reverse());
 		} catch (err) {
 			console.log(err);
 		}

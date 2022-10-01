@@ -2,29 +2,10 @@ import { useState, useReducer } from "react";
 import "./style.css";
 
 export default function AddUserForm({ addedUser }) {
-	const [phone, setPhone] = useState("");
+	const [name, setName] = useState("");
+	const [github, setGithub] = useState("");
 	const [designation, setAge] = useState("");
 	const [image, setImage] = useState("");
-
-	const [nameState, dispatchNameState] = useReducer(
-		(state, action) => {
-			if (action.type === "USERNAME") {
-				return {
-					userName: action.nameValue,
-					isValid: action.nameValue.includes(" "),
-				};
-			}
-			if (action.type === "NAME_ON_CHANGE") {
-				return {
-					userName: state.userName,
-				};
-			}
-		},
-		{
-			userName: "",
-			isValid: null,
-		}
-	);
 
 	const [emailState, dispatchEmailState] = useReducer(
 		(state, action) => {
@@ -47,16 +28,7 @@ export default function AddUserForm({ addedUser }) {
 	);
 
 	const addUserHandler = (e) => {
-		e.preventDefault();
-
-		setAge("");
-		setImage("");
-		setPhone("");
-		if (!nameState.isValid) {
-			alert("name is not valid");
-			return;
-		}
-		nameState.nameValue = "";
+		e.preventDefault();		
 		if (!emailState.isValid) {
 			alert("email is not valid");
 			return;
@@ -64,13 +36,18 @@ export default function AddUserForm({ addedUser }) {
 		emailState.emailValue = "";
 
 		const userData = {
-			userName: nameState.userName,
+			userName: name,
 			userEmail: emailState.userEmail,
 			userDesignation: designation,
-			userPhone: phone,
+			userGithub: github,
 			userImage: image,
 		};
 		addedUser(userData);
+		window.location.reload(true);
+		setName("");
+		setAge("");
+		setImage("");
+		setGithub("");
 	};
 
 	return (
@@ -81,23 +58,9 @@ export default function AddUserForm({ addedUser }) {
 					<input
 						type="text"
 						placeholder="Full Name"
-						value={nameState.nameValue}
-						onChange={(e) =>
-							dispatchNameState({
-								type: "NAME_ON_CHANGE",
-								nameValue: e.target.value,
-							})
-						}
-						onBlur={(e) =>
-							dispatchNameState({
-								type: "USERNAME",
-								nameValue: e.target.value,
-							})
-						}
+						value={name}
+						onChange={(e) => setName(e.target.value)}
 					/>
-					{nameState.isValid === false && (
-						<span className="invalid">*Enter your full name</span>
-					)}
 				</div>
 				<div className="form__group">
 					<input
@@ -131,19 +94,18 @@ export default function AddUserForm({ addedUser }) {
 				</div>
 				<div className="form__group">
 					<input
-						type="number"
-						placeholder="Contact no."
-						value={phone}
+						type="text"
+						placeholder="GitHub Username"
+						value={github}
 						onChange={(e) => {
-							if (e.target.value.length > 11) return false;
-							setPhone(e?.target.value);
+							setGithub(e?.target.value);
 						}}
 					/>
 				</div>
 				<div className="form__group">
 					<input
 						type="text"
-						placeholder="Profile Url"
+						placeholder="Profile Pic Url"
 						value={image}
 						onChange={(e) => setImage(e.target.value)}
 					/>

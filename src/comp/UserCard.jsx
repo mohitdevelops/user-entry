@@ -1,11 +1,11 @@
-import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaGithub } from "react-icons/fa";
 import "./style.css";
 
-export default function UserCard({ name, email, phone, designation, image }) {
+export default function UserCard({ name, email, github, designation, image }) {
 	return (
 		<div className="user__card">
 			<div className="user__thumb">
-				<img src={image} alt={name}/>
+				<img src={image} alt={name} />
 			</div>
 			<div className="user__detail">
 				<h3>{name}</h3>
@@ -16,8 +16,10 @@ export default function UserCard({ name, email, phone, designation, image }) {
 						{email}
 					</p>
 					<p>
-						<FaPhoneAlt className="icons" />
-						{phone}
+						<FaGithub className="icons" />
+						<a href={`https://github.com/${github}`} target="_blank">
+							{github}
+						</a>
 					</p>
 				</div>
 			</div>
