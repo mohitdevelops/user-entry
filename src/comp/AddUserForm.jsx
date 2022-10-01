@@ -1,9 +1,7 @@
 import { useState, useReducer } from "react";
 import "./style.css";
 
-export default function AddUserForm({ addedUser, responseUserData }) {	
-
-	// const [email, setEmail] = useState("");
+export default function AddUserForm({ addedUser }) {
 	const [phone, setPhone] = useState("");
 	const [designation, setAge] = useState("");
 	const [image, setImage] = useState("");
@@ -48,7 +46,7 @@ export default function AddUserForm({ addedUser, responseUserData }) {
 		}
 	);
 
-	const addUserHandler = async (e) => {
+	const addUserHandler = (e) => {
 		e.preventDefault();
 
 		setAge("");
@@ -72,21 +70,7 @@ export default function AddUserForm({ addedUser, responseUserData }) {
 			userPhone: phone,
 			userImage: image,
 		};
-		// Sending data back to the parent App.js
-		addedUser(userData);	
-		
-		// const response = await fetch('https://user-entry-data-default-rtdb.asia-southeast1.firebasedatabase.app/users.json', {
-		// 	method: 'POST',
-		// 	body: JSON.stringify(userData),
-		// 	headers: {
-		// 		'Content-Type': 'application/json'
-		// 	}
-		// })
-
-		// const data = await response.json();
-
-		// responseUserData(data);
-		
+		addedUser(userData);
 	};
 
 	return (
