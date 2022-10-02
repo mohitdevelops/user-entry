@@ -4,7 +4,7 @@ import "./style.css";
 export default function AddUserForm({ addedUser }) {
 	const [name, setName] = useState("");
 	const [github, setGithub] = useState("");
-	const [designation, setAge] = useState("");
+	const [bio, setBio] = useState("");
 	const [image, setImage] = useState("");
 
 	const [emailState, dispatchEmailState] = useReducer(
@@ -38,14 +38,14 @@ export default function AddUserForm({ addedUser }) {
 		const userData = {
 			userName: name,
 			userEmail: emailState.userEmail,
-			userDesignation: designation,
+			userBio: bio,
 			userGithub: github,
 			userImage: image,
 		};
 		addedUser(userData);
 		window.location.reload(true);
 		setName("");
-		setAge("");
+		setBio("");
 		setImage("");
 		setGithub("");
 	};
@@ -87,9 +87,9 @@ export default function AddUserForm({ addedUser }) {
 				<div className="form__group">
 					<input
 						type="text"
-						placeholder="Designation"
-						value={designation}
-						onChange={(e) => setAge(e.target.value)}
+						placeholder="Bio"
+						value={bio}
+						onChange={(e) => setBio(e.target.value)}
 					/>
 				</div>
 				<div className="form__group">

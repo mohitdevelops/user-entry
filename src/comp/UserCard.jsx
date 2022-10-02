@@ -1,7 +1,7 @@
 import { FaPhoneAlt, FaEnvelope, FaGithub } from "react-icons/fa";
 import "./style.css";
 
-export default function UserCard({ name, email, github, designation, image }) {
+export default function UserCard({ name, email, github, bio, image }) {
 	return (
 		<div className="user__card">
 			<div className="user__thumb">
@@ -9,7 +9,7 @@ export default function UserCard({ name, email, github, designation, image }) {
 			</div>
 			<div className="user__detail">
 				<h3>{name}</h3>
-				<span>{designation}</span>
+				<span>{bio}</span>
 				<div>
 					<p>
 						<FaEnvelope className="icons" />

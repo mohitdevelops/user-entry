@@ -19,7 +19,7 @@ function App() {
 					key: key,
 					userName: data[key].userName,
 					userEmail: data[key].userEmail,
-					userDesignation: data[key].userDesignation,
+					userBio: data[key].userBio,
 					userGithub: data[key].userGithub,
 					userImage: data[key].userImage,
 				});

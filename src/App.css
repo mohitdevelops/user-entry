@@ -34,7 +34,7 @@ main > div{
   overflow-y: auto;
 }
 .form__wrap{
-  max-width: 270px;
+  max-width: 230px;
   border-right: solid 1px rgb(255 255 255 / 27%);
 }
 .user__wrap > p{

@@ -11,7 +11,7 @@ export default function Users({ newUser }) {
 						key={i}
 						name={el.userName}
 						email={el.userEmail}
-						designation={el.userDesignation}
+						bio={el.userBio}
 						github={el.userGithub}
 						image={el.userImage}
 					/>
